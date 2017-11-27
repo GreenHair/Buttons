@@ -1,0 +1,85 @@
+﻿<Window x:Class="ButtonControls.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ButtonControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="7"/>
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid ShowGridLines="True" Name="grd">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button IsDefault="True"
+                ClickMode="Release"
+                Click="Button_Click"
+                BorderThickness="3"
+                Cursor="Hand" 
+                Name="simpleButton"
+                ToolTip="Click mich" MouseEnter="Button_MouseEnter" MouseLeave="simpleButton_MouseLeave" PreviewMouseLeftButtonDown="simpleButton_PreviewMouseLeftButtonDown" PreviewMouseLeftButtonUp="simpleButton_PreviewMouseLeftButtonUp" Margin="14,38,15,38" >
+            <Button.Foreground>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlColorKey}}"/>
+            </Button.Foreground>
+            <Button.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HotTrackColorKey}}"/>
+            </Button.Background>
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <!--<Border CornerRadius="15"/>-->
+            Button
+        </Button>
+        <ToggleButton
+            Name="toggle"
+            Click="ToggleButton_Click"
+            Checked="ToggleButton_Checked"
+            Unchecked="ToggleButton_Unchecked"
+            Background="Transparent"
+            Grid.Row="1" HorizontalAlignment="Center"
+            VerticalAlignment="Center" 
+            Width="80" Height="80">
+            <Image Name="smiling" Source="C:\csharpWPF\ButtonControls\ButtonControls\Properties\Neutral_Face_Emoji.png"/>
+        </ToggleButton>
+        <StackPanel Name="RptBtns" Grid.Row="2">
+            <RepeatButton
+                Name="repeatUp"
+                Click="repeatUp_Click"
+                Margin="10"                
+                Width="100" Height="30">+</RepeatButton>
+            <RepeatButton
+                Name="repeatDown"
+                Click="repeatDown_Click"
+                Margin="10"
+                Width="100" Height="30">-</RepeatButton>
+        </StackPanel>
+        <Label Name="lbl_btn" Grid.Column="1" VerticalContentAlignment="Center" Content="Vor dem Click" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Sylfaen"/>
+        <Label Name="tgl_btn" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Label Name="tgl_aktiv" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Label Name="tgl_inaktiv" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Label Name="rpt_btn" Grid.Row="2" Grid.Column="1" Content="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
